@@ -1,15 +1,15 @@
 // src/components/EditStudentModal.jsx
-import React, { useState, useEffect } from "react";
-import { Modal, TextField, Button, Box } from "@mui/material";
-import { db } from "../firebaseConfig";
-import { doc, updateDoc } from "firebase/firestore";
-import Box from "@mui/material/Box"; 
+import React, { useState, useEffect } from 'react';
+import { Modal, TextField, Button, Box } from '@mui/material';
+import { db } from '../firebaseConfig';
+import { doc, updateDoc } from 'firebase/firestore';
+import Box from '@mui/material/Box';
 
 const EditStudentModal = ({ open, onClose, student, fetchStudents }) => {
-  const [name, setName] = useState(student?.name || "");
-  const [className, setClassName] = useState(student?.class || "");
-  const [section, setSection] = useState(student?.section || "");
-  const [rollNumber, setRollNumber] = useState(student?.rollNumber || "");
+  const [name, setName] = useState(student?.name || '');
+  const [className, setClassName] = useState(student?.class || '');
+  const [section, setSection] = useState(student?.section || '');
+  const [rollNumber, setRollNumber] = useState(student?.rollNumber || '');
 
   useEffect(() => {
     if (student) {
@@ -22,7 +22,7 @@ const EditStudentModal = ({ open, onClose, student, fetchStudents }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const studentRef = doc(db, "students", student.id);
+    const studentRef = doc(db, 'students', student.id);
     await updateDoc(studentRef, {
       name,
       class: className,
@@ -35,7 +35,7 @@ const EditStudentModal = ({ open, onClose, student, fetchStudents }) => {
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box sx={{ padding: 2, backgroundColor: "white", margin: "100px auto", maxWidth: 400 }}>
+      <Box sx={{ padding: 2, backgroundColor: 'white', margin: '100px auto', maxWidth: 400 }}>
         <h2>Edit Student</h2>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -79,7 +79,7 @@ const EditStudentModal = ({ open, onClose, student, fetchStudents }) => {
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ marginTop: "20px" }}
+            sx={{ marginTop: '20px' }}
           >
             Update
           </Button>

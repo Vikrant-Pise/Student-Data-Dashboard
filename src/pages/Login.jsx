@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Container, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom"; // For navigation
-import { auth } from "../firebaseConfig"; // Firebase authentication
-import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase method
+import { useNavigate } from "react-router-dom"; 
+import { auth } from "../firebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth"; 
 
 const Login = () => {
-  const navigate = useNavigate(); // For redirecting to the students page
+  const navigate = useNavigate(); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "email") {
@@ -20,15 +19,15 @@ const Login = () => {
     }
   };
 
-  // Handle form submission
+  
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError(""); // Clear any previous errors
+    setError(""); 
 
     try {
-      // Firebase login method
+     
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/students"); // Redirect to the students page after login
+      navigate("/students"); 
     } catch (err) {
       setError("Invalid credentials. Please try again.");
     }
@@ -43,11 +42,11 @@ const Login = () => {
           alignItems: "center",
           justifyContent: "center",
           padding: "20px",
-          border: "2px solid black", // Black border
-          borderRadius: "8px", // Rounded corners
-          backgroundColor: "white", // Background color for the box
+          border: "2px solid black", 
+          borderRadius: "8px",
+          backgroundColor: "white",
           width: "100%",
-          maxWidth: "400px", // Limit the width of the box
+          maxWidth: "400px",
         }}
       >
         <Typography variant="h5" gutterBottom>

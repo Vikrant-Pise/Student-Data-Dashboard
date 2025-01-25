@@ -30,13 +30,13 @@ const AddStudentModal = ({ open, onClose, fetchStudents }) => {
 
   const [errors, setErrors] = useState({});
 
-  // Handle input change
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Validate form fields
+  
   const validate = () => {
     let tempErrors = {};
     if (!formData.name) tempErrors.name = 'Name is required.';
@@ -44,19 +44,19 @@ const AddStudentModal = ({ open, onClose, fetchStudents }) => {
       tempErrors.email = 'Valid email is required.';
     if (!formData.phone || formData.phone.length !== 10)
       tempErrors.phone = 'Phone number must be 10 digits.';
-    // Add more validation rules as needed
+   
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
-  // Handle form submission
+  
   const handleSubmit = async () => {
     if (validate()) {
       try {
         await addDoc(collection(db, 'students'), formData);
         alert('Student added successfully!');
         onClose();
-        fetchStudents(); // Refresh the students table
+        fetchStudents();
       } catch (error) {
         console.error('Error adding student:', error);
         alert('Error adding student. Please try again.');

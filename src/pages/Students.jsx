@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import AddStudentModal from "../components/AddStudentModal";
-import EditStudentModal from "../components/EditStudentModal"; // Assuming you have an EditStudentModal component
+import EditStudentModal from "../components/EditStudentModal"; 
 import { db } from "../firebaseConfig";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
@@ -10,30 +10,28 @@ import Box from "@mui/material/Box";
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false); // For editing
-  const [currentStudent, setCurrentStudent] = useState(null); // For storing student data to edit
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false); 
+  const [currentStudent, setCurrentStudent] = useState(null); 
 
-  // Fetch students from Firestore
+ 
   const fetchStudents = async () => {
     const snapshot = await getDocs(collection(db, "students"));
     setStudents(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
   };
 
-  // Handle delete student
+ 
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "students", id));
-    fetchStudents(); // Refresh the student list after deletion
+    fetchStudents(); 
   };
 
-  // Handle edit student
+  
   const handleEdit = (student) => {
     setCurrentStudent(student);
     setIsEditModalOpen(true);
   };
-
-  // Handle view student
   const handleView = (student) => {
-    alert(`Student Details: ${JSON.stringify(student)}`); // You can create a more sophisticated modal for this
+    alert(`Student Details: ${JSON.stringify(student)}`); 
   };
 
   useEffect(() => {
