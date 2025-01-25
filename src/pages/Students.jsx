@@ -5,6 +5,7 @@ import EditStudentModal from "../components/EditStudentModal"; // Assuming you h
 import { db } from "../firebaseConfig";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import Box from "@mui/material/Box"; 
 
 const Students = () => {
   const [students, setStudents] = useState([]);

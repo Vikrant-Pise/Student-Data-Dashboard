@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, TextField, Button, Box } from "@mui/material";
 import { db } from "../firebaseConfig";
 import { doc, updateDoc } from "firebase/firestore";
+import Box from "@mui/material/Box"; 
 
 const EditStudentModal = ({ open, onClose, student, fetchStudents }) => {
   const [name, setName] = useState(student?.name || "");
