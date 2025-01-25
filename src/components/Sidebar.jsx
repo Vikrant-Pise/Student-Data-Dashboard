@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { Box, Button, Drawer, List, ListItem, ListItemText, ListItemIcon, Typography } from "@mui/material";
 import { People, ExitToApp } from "@mui/icons-material"; 
-import Box from "@mui/material/Box"; 
+
 
 const Sidebar = () => {
   const navigate = useNavigate();
